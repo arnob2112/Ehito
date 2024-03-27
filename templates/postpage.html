@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Post Page</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head> 
+    <body>
+        
+
+        <header>
+            <!-- Nav -->
+            <div class="nav container">
+                <!-- Logo -->
+                <a href="{{ url_for('home') }}" class="logo">Eh<span>ito</span></a>
+                <!-- Login Button -->
+                <a href="{{ url_for('home') }}" class="login">Login</a>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <section class="post-header">
+            <div class="header-content post-container">
+                <!-- Back To Home -->
+                <a href="{{ url_for('home') }}" class="back-home">Back To Home</a>
+                <!-- Title -->
+                <h1 class="header-title">How To Create Best UX Design With Adobe Xd</h1> 
+                <!-- Post Image -->
+                <img src="{{ url_for('static', filename='images/post-1.jpg') }}" alt="" class="header-img">
+            </div>
+        </section>
+        
+        <!-- Posts -->
+        <section class="post-content post-container">
+            <h2 class="sub-heading">Create Best UX Design</h2>
+            <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Ultrices sagittis orci a scelerisque. At consectetur lorem donec massa sapien faucibus et molestie. Condimentum lacinia quis vel eros. Nulla malesuada pellentesque elit eget gravida. Tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi eget mauris pharetra et ultrices neque. Non pulvinar neque laoreet suspendisse. Vel fringilla est ullamcorper eget. Vel eros donec ac odio. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Ultrices sagittis orci a scelerisque. At consectetur lorem donec massa sapien faucibus et molestie. Condimentum lacinia quis vel eros. Nulla malesuada pellentesque elit eget gravida. Tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi eget mauris pharetra et ultrices neque. Non pulvinar neque laoreet suspendisse. Vel fringilla est ullamcorper eget. Vel eros donec ac odio. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo.</p>
+            
+            <h2 class="sub-heading">Create Best UX Design</h2>
+            <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Ultrices sagittis orci a scelerisque. At consectetur lorem donec massa sapien faucibus et molestie. Condimentum lacinia quis vel eros. Nulla malesuada pellentesque elit eget gravida. Tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi eget mauris pharetra et ultrices neque. Non pulvinar neque laoreet suspendisse. Vel fringilla est ullamcorper eget. Vel eros donec ac odio. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Ultrices sagittis orci a scelerisque. At consectetur lorem donec massa sapien faucibus et molestie. Condimentum lacinia quis vel eros. Nulla malesuada pellentesque elit eget gravida. Tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi eget mauris pharetra et ultrices neque. Non pulvinar neque laoreet suspendisse. Vel fringilla est ullamcorper eget. Vel eros donec ac odio. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo.</p>
+            <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Ultrices sagittis orci a scelerisque. At consectetur lorem donec massa sapien faucibus et molestie. Condimentum lacinia quis vel eros. Nulla malesuada pellentesque elit eget gravida. Tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi eget mauris pharetra et ultrices neque. Non pulvinar neque laoreet suspendisse. Vel fringilla est ullamcorper eget. Vel eros donec ac odio. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo.</p>
+        </section>
+        
+        <!-- Share -->
+        <div class="share post-container">
+            <span class="share-title">Share this article</span> 
+                <div class="social">
+                    <a href="#"><i class='bx bx1-facebook'></i></a> 
+                    <a href="#"><i class='bx bxl-twitter'></i></a> 
+                    <a href="#"><i class='bx bxl-instagram'></i></a> 
+                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                </div>
+            </div>
+
+        <!-- Footer -->
+        <div class="footer container">
+            <p>&#169; Carpoolvenom All Right Reserved</p> 
+            <div class="social">
+                <a href="#"><i class='bx bx1-facebook'></i></a> 
+                <a href="#"><i class='bx bxl-twitter'></i></a> 
+                <a href="#"><i class='bx bxl-instagram'></i></a> 
+                <a href="#"><i class='bx bxl-linkedin'></i></a> 
+            </div>
+        </div>
+
+
+
+        <!-- JQuery Link -->
+        <script 
+        src="https://code.jquery.com/jquery-3.7.1.js" 
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+        crossorigin="anonymous">
+        </script>
+
+        <script src="{{ url_for('static', filename='javascripts/main.js') }}"></script>
+    </body>
+</html>

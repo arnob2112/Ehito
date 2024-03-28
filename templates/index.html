@@ -7,7 +7,7 @@
         <title>Responsive BLog Website</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head> 
+    </head>
     <body>
         
 
@@ -16,8 +16,16 @@
             <div class="nav container">
                 <!-- Logo -->
                 <a href="{{ url_for('home') }}" class="logo">Eh<span>ito</span></a>
-                <!-- Login Button -->
-                <a href="{{ url_for('home') }}" class="login">Login</a>
+                <!-- Login/Logout Buttons -->
+                <div class="right-buttons">
+                    {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('login') }}" class="login">Login</a>
+                    {% endif %}
+                    {% if current_user.is_authenticated %}
+                     <a href="{{ url_for('createpost') }}" class="logout">Create Post</a>
+                     <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+                    {% endif %}
+                </div>
             </div>
         </header>
         
@@ -39,109 +47,30 @@
         
         <!-- Posts -->
         <section class="post container">
-            <!-- Post Box 1 -->
-            <div class="post-box mobile">
-                <img src="{{ url_for('static', filename='images/post-1.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Mobile</h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
+            {% for blog in all_blog %}
+            <div class="post-box {{blog.category.lower()}}">
+                <img src="{{ blog.cover_path }}" alt="" class="post-img">
+                <h2 class="category">{{blog.category}}</h2>
+                <a href="{{ url_for('postpage', post_id=blog.id) }}" class="post-title">
+                    {{blog.title}}
                 </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
+                <span class="post-date">{{blog.date}}</span>
+<!--                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.-->
+                <div id="originalText"> <p class="post-description"> {{ blog.description | striptags }}</p> </div>
                 <!-- Profile -->
                 <div class="profile">
                     <img src="{{ url_for('static', filename='images/profile-1.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
+                    <span class="profile-name">{{blog.author}}</span>
                 </div>
             </div>
-            <!-- Post Box 2 -->
-            <div class="post-box tech">
-                <img src="{{ url_for('static', filename='images/post-2.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Tech </h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
-                </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='images/profile-2.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
-                </div>
-            </div>
-            <!-- Post Box 3 -->
-            <div class="post-box design">
-                <img src="{{ url_for('static', filename='images/post-3.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Design</h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
-                </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='images/profile-3.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
-                </div>
-            </div>
-            <!-- Post Box 4 -->
-            <div class="post-box mobile">
-                <img src="{{ url_for('static', filename='images/post-4.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Mobile</h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
-                </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='images/profile-1.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
-                </div>
-            </div>
-            <!-- Post Box 5 -->
-            <div class="post-box tech">
-                <img src="{{ url_for('static', filename='images/post-5.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Tech </h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
-                </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='images/profile-2.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
-                </div>
-            </div>
-            <!-- Post Box 6 -->
-            <div class="post-box design">
-                <img src="{{ url_for('static', filename='images/post-6.jpg') }}" alt="" class="post-img">
-                <h2 class="category">Design</h2>
-                <a href="{{ url_for('postpage') }}" class="post-title">
-                    How To Create UX Design With Adobe XD
-                </a>
-                
-                <span class="post-date">12 Feb 2022</span>
-                <p class="post-decription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra. Risus nec feugiat in fermentum posuere. Vulputate enim nulla aliquet porttitor lacus luctus. Mauris a diam maecenas sed. Ac auctor augue mauris augue. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Consequat semper viverra nam libero justo laoreet sit amet.
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='images/profile-3.jpg') }}" alt="" class="profile-img">
-                    <span class="profile-name">Marques Brown</span>
-                </div>
-            </div>
+            {% endfor %}
         </section>
         
         <!-- Footer -->
         <div class="footer container">
-            <p>&#169; Carpoolvenom All Right Reserved</p> 
+            <p>&#169; Ehito All Right Reserved</p>
             <div class="social">
-                <a href="#"><i class='bx bx1-facebook'></i></a> 
+                <a href="#"><i class='bx bxl-facebook'></i></a>
                 <a href="#"><i class='bx bxl-twitter'></i></a> 
                 <a href="#"><i class='bx bxl-instagram'></i></a> 
                 <a href="#"><i class='bx bxl-linkedin'></i></a> 
@@ -151,7 +80,7 @@
 
 
         <!-- JQuery Link -->
-        <script 
+        <script
         src="https://code.jquery.com/jquery-3.7.1.js" 
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
         crossorigin="anonymous">

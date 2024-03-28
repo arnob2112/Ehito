@@ -14,7 +14,8 @@ class Login(Resource):
     def post(self):
         username = request.form.get('username')
         password = request.form.get('password')
-        remember = True if request.form.get('remember') else False
+        # remember = True if request.form.get('remember') else False
+        remember = False
 
         user = Users.query.filter_by(username=username).first()
         print("user", username, "pass", password)

@@ -4,7 +4,7 @@ from flask_login import LoginManager
 
 from resources.homepage import Home
 from resources.authentication import Login, Logout
-from resources.createpost import CreatePost
+from resources.post import CreatePost, UpdatePost
 from resources.postpage import PostPage
 from models.users import Users
 from database import db
@@ -29,11 +29,12 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-api.add_resource(Home, "/")
+api.add_resource(Home, '/')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
-api.add_resource(CreatePost, "/create-post")
-api.add_resource(PostPage, "/post-page/<string:post_id>")
+api.add_resource(CreatePost, '/create-post')
+api.add_resource(UpdatePost, '/update-post/<string:post_id>')
+api.add_resource(PostPage, '/post-page/<string:post_id>')
 
 
 if __name__ == '__main__':

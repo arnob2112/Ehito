@@ -30,7 +30,24 @@ class CreatePost(Resource):
         return redirect(url_for('home'))
 
 
+class UpdatePost(Resource):
+    @login_required
+    def get(self, post_id):
+        blog = Blogs.query.filter_by(id=post_id).first()
+        if blog is None:
+            flash("No blog found.")
+        return make_response(render_template("update_post.html", blog=blog))
 
+    @login_required
+    def post(self, post_id):
+        data = dict(request.form.items())
 
+        Blogs.query.filter_by(id=data.get('id')).update(data)
+        db.session.commit()
 
+        if request.files['cover_picture']:
+            cover_path = Blogs.create_blog_picture_path(data.get('id'))
+            uploaded_cover = request.files['cover_picture']
+            uploaded_cover.save(cover_path)
 
+        return redirect(url_for('postpage', post_id=data.get('id')))

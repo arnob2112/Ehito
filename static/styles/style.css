@@ -116,7 +116,7 @@ header.shadow .logo{
 }
 
 .home-text {
-    color: var(--bg-color); 
+    color: var(--bg-color);
     text-align: center;
 }
 
@@ -258,8 +258,9 @@ header.shadow .logo{
 /* Post Content  */
 
 .post-header { 
-    width: 100%; 
+    width: 100%;
     height: 500px;
+    display: grid;
     background: var(--container-color);
 }
 
